@@ -14,7 +14,6 @@ import org.springframework.web.client.RestTemplate;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
-import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.batch5.ssf.noticeboard.models.Notice;
@@ -32,7 +31,7 @@ public class NoticeService {
 	// You can change the signature of this method by adding any number of parameters
 	// and return any type
 
-	public void postToNoticeServer() {
+	public List<Notice> postToNoticeServer() {
 		RequestEntity<Void> req = RequestEntity
 								.get("https://publishing-production-d35a.up.railway.app/")
 								.accept(MediaType.APPLICATION_JSON).build();
@@ -69,6 +68,17 @@ public class NoticeService {
 			noticeList.add(nb);
 		}
 
+		return noticeList;
+	}
+
+	public void addToRedis(Notice nb) {
+		JsonObject jObject = Json.createObjectBuilder()
+		.add("title", nb.getTitle())
+		.add("poster", nb.getPoster())
+		.add("postDate", nb.getPostDate().getTime()/1000)
+		.add("categories", nb.getCategories())
+		.add("text", nb.getText())
+		.build();
 	}
 
 }

@@ -1,39 +1,39 @@
-FROM openjdk:23-jdk-oracle AS builder
+FROM openjdk:23-jdk AS compiler
 
-ARG COMPILE_DIR=/compiledir
+ARG COMPILE_DIR=/code_folder
 
 WORKDIR ${COMPILE_DIR}
 
-COPY mvnw .
-COPY mvnw.cmd .
-COPY pom.xml .
 COPY .mvn .mvn
 COPY src src
+COPY pom.xml .
+COPY mvnw .
+COPY mvnw.cmd .
 
-RUN ./mvnw clean package -Dmaven.test.skip=true
+RUN chmod a+x ./mvnw
 
-ENV SERVER_PORT=8080
+RUN ./mvnw clean package -Dmaven.tests.skip=true
 
-EXPOSE ${SERVER_PORT}
-
-
-
-FROM openjdk:23-jdk-oracle
-
-ARG WORKDIR=/app
-
-WORKDIR ${WORKDIR}
-
-COPY --from=builder /compiledir/target/ssf-0.0.1-SNAPSHOT.jar app.jar
-# COPY customers.csv
-
-ENV SERVER_PORT=8080
-ENV API_KEY=abc123
-ENV FILEPATH=/app/customers.csv
+ENV SERVER_PORT 3000
 
 EXPOSE ${SERVER_PORT}
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+# run application using ENTRYPOINT or CMD
+ENTRYPOINT java -jar target/noticebaordapp-0.0.1-SNAPSHOT.jar
+
+FROM openjdk:23-jdk
+
+ARG DEPLOY_DIR=/app
+
+WORKDIR ${DEPLOY_DIR}
+
+COPY --from=compiler /code_folder/target/noticeboardapp-0.0.1-SNAPSHOT.jar noticeboardapp.jar
+
+ENV SERVER_PORT=3000
+
+EXPOSE ${SERVER_PORT}
+
+HEALTHCHECK --interval=60s --timeout=120s --start-period=5s --retries=3 \
     CMD curl http://localhost:${PORT}/health || exit 1
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT [ "java", "-jar", "noticeboardapp.jar" ]

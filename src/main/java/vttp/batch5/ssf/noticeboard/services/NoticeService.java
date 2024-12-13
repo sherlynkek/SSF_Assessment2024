@@ -81,8 +81,10 @@ public class NoticeService {
 		.add("text", nb.getText())
 		.build();
 
-		noticeRepo.addToHash(Constant.redisKey, String.valueOf(nb.getTitle()), jObject.toString());
+		noticeRepo.addToHash(Constant.redisKey, String.valueOf(nb.getPostingId()), jObject.toString());
 	}
 
-	
+	public void saveToRedis() {
+
+	}
 }

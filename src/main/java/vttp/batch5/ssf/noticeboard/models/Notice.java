@@ -30,8 +30,8 @@ public class Notice {
     @NotEmpty(message = "the content of the notice should not be empty")
     private String text;
     
-    public Notice() {
-
+    public Notice(String string) {
+        //TODO Auto-generated constructor stub
     }
 
     public Notice(String title, String poster, Date postDate, String categories, String text) {

@@ -41,4 +41,16 @@ public class NoticeController {
         
         return null;
     }
+
+    @GetMapping
+    public String successful() {
+        
+        return "redirect:/notice";
+    }
+
+    @GetMapping
+    public String error() {
+        
+        return "redirect:/notice";
+    }
 }

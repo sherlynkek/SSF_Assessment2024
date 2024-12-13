@@ -30,6 +30,8 @@ public class Notice {
     @NotEmpty(message = "the content of the notice should not be empty")
     private String text;
     
+    private String postingId;
+    
     public Notice(String string) {
         //TODO Auto-generated constructor stub
     }
@@ -82,9 +84,19 @@ public class Notice {
         this.text = text;
     }
 
+    public String getPostingId() {
+        return postingId;
+    }
+
+    public void setPostingId(String postingId) {
+        this.postingId = postingId;
+    }
+    
     @Override
     public String toString() {
         return title + "," + poster + "," + postDate + "," + categories + "," + text;
     }
+
+    
 
 }

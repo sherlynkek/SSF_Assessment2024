@@ -1,5 +1,8 @@
 package vttp.batch5.ssf.noticeboard.services;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class NoticeService {
 
 	// TODO: Task 3

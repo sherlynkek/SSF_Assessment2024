@@ -1,5 +1,8 @@
 package vttp.batch5.ssf.noticeboard.repositories;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class NoticeRepository {
 
 	// TODO: Task 4

@@ -38,6 +38,9 @@ public class NoticeController {
     
     @PostMapping(consumes = "application/json")
     public String postNoticeBoard(@ModelAttribute("notice") Notice entity, BindingResult result) {
+        if(result.hasErrors()) {
+            return "view3";
+        }
         
         return null;
     }

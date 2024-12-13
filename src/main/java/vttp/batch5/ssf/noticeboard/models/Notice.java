@@ -1,6 +1,7 @@
 package vttp.batch5.ssf.noticeboard.models;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,6 +38,8 @@ public class Notice {
     }
 
     public Notice(String title, String poster, Date postDate, String categories, String text) {
+        this.postingId = UUID.randomUUID().toString();
+
         this.title = title;
         this.poster = poster;
         this.postDate = postDate;
@@ -91,12 +94,10 @@ public class Notice {
     public void setPostingId(String postingId) {
         this.postingId = postingId;
     }
-    
+
     @Override
     public String toString() {
         return title + "," + poster + "," + postDate + "," + categories + "," + text;
     }
-
-    
 
 }

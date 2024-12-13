@@ -27,6 +27,53 @@ public class NoticeRepository {
 	 *
 	 *
 	 */
+
+	 /* Key Management 
+	 Set a Key-Value Pair: SET key value 
+	 Example: SET name "John"
+
+	 Get the Value of a Key: GET key 
+	 Example: GET name
+	 
+	 Delete a Key: DEL key 
+	 Example: DEL name
+	 
+	 Check if a Key Exists: EXISTS key 
+	 Example: EXISTS name
+	 
+	 View All Keys: KEYS *
+	 
+	 Set Key Expiry (in seconds): EXPIRE key seconds 
+	 Example: EXPIRE name 60
+	 
+	 Check Time to Live (TTL) for a Key: TTL key
+	 
+	 Data Structure Commands Strings
+	 Append to a String: APPEND key value 
+	 Example: APPEND name " Doe"
+	 
+	 Hashes Set a Field in a Hash: HSET hash key value 
+	 Example: HSET user name "Alice"
+	 
+	 Get a Field from a Hash: HGET hash key
+	 
+	 Get All Fields and Values from a Hash: HGETALL hash
+	 
+	 Lists Push to the Beginning of a List: LPUSH list value
+	 
+	 Push to the End of a List: RPUSH list value
+	 
+	 Get All List Elements: LRANGE list 0 -1
+	 
+	 Sets Add Members to a Set: SADD set value
+	 
+	 Get All Members of a Set: SMEMBERS set
+	 
+	 Sorted Sets Add Members with Scores: ZADD zset score member 
+	 Example: ZADD leaderboard 100 "Alice"
+	 
+	 Get Members by Rank: ZRANGE zset 0 -1 WITHSCORES */
+
 	public void insertNotices() {
 
 	}

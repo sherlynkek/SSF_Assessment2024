@@ -84,4 +84,5 @@ public class NoticeService {
 		noticeRepo.addToHash(Constant.redisKey, String.valueOf(nb.getTitle()), jObject.toString());
 	}
 
+	
 }

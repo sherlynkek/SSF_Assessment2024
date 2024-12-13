@@ -28,18 +28,18 @@ public class Notice {
     private String categories;
 
     @NotEmpty(message = "the content of the notice should not be empty")
-    private String contentText;
+    private String text;
     
     public Notice() {
 
     }
 
-    public Notice(String title, String poster, Date postDate, String categories, String contentText) {
+    public Notice(String title, String poster, Date postDate, String categories, String text) {
         this.title = title;
         this.poster = poster;
         this.postDate = postDate;
         this.categories = categories;
-        this.contentText = contentText;
+        this.text = text;
     }
 
     public String getTitle() {
@@ -74,17 +74,17 @@ public class Notice {
         this.categories = categories;
     }
 
-    public String getContentText() {
-        return contentText;
+    public String getText() {
+        return text;
     }
 
-    public void setContentText(String contentText) {
-        this.contentText = contentText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
     public String toString() {
-        return title + "," + poster + "," + postDate + "," + categories + "," + contentText;
+        return title + "," + poster + "," + postDate + "," + categories + "," + text;
     }
 
 }

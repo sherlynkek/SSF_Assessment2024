@@ -4,10 +4,14 @@ import java.util.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import vttp.batch5.ssf.noticeboard.models.Notice;
 
 // Use this class to write your request handlers
 
@@ -33,5 +37,8 @@ public class NoticeController {
     }
     
     @PostMapping(consumes = "application/json")
-    public String 
+    public String postNoticeBoard(@ModelAttribute("notice") Notice entity, BindingResult result) {
+        
+        return null;
+    }
 }

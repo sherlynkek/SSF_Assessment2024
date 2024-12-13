@@ -16,6 +16,7 @@ import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import vttp.batch5.ssf.noticeboard.constant.Constant;
 import vttp.batch5.ssf.noticeboard.models.Notice;
 import vttp.batch5.ssf.noticeboard.repositories.NoticeRepository;
 
@@ -79,6 +80,8 @@ public class NoticeService {
 		.add("categories", nb.getCategories())
 		.add("text", nb.getText())
 		.build();
+
+		noticeRepo.addToHash(Constant.redisKey, String.valueOf(nb.getTitle()), jObject.toString());
 	}
 
 }
